@@ -5,11 +5,22 @@ import GameCard from './GameCard';
 import LoadingSpinner from './LoadingSpinner';
 
 import { FaCheck } from 'react-icons/fa6';
+import { useState } from 'react';
 
 const GameList = () => {
-  const { loading, games } = useFetchGames();
+  const [page, setPage] = useState(1);
+  const { loading, games } = useFetchGames(page);
 
-  console.log(games);
+  const handleNext = () => {
+    setPage((prevPage) => (prevPage += 1));
+  };
+
+  const handlePrev = () => {
+    if (page === 1) {
+      return null;
+    }
+    setPage((prevPage) => (prevPage -= 1));
+  };
 
   return (
     <div className='flex flex-col justify-center items-center'>
@@ -48,12 +59,27 @@ const GameList = () => {
           <LoadingSpinner size='lg' />
         </div>
       ) : (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 p-4 items-center justify-center'>
-          {games.map((game, index) => {
-            if (index === 0) return null;
-            return <GameCard key={game.id} game={game} />;
-          })}
-        </div>
+        <>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 p-4 items-center justify-center'>
+            {games.map((game, index) => {
+              if (index === 0) return null;
+              return <GameCard key={game.id} game={game} />;
+            })}
+          </div>
+          <div className='mt-10 join'>
+            <button
+              disabled={page === 1}
+              onClick={handlePrev}
+              className='join-item btn'
+            >
+              «
+            </button>
+            <button className='join-item btn'>Page {page}</button>
+            <button onClick={handleNext} className='join-item btn'>
+              »
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
