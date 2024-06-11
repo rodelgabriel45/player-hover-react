@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const BASE_URL = 'https://api.rawg.io/api/games';
 
 const useFetchGames = () => {
   const [loading, setLoading] = useState(false);
+  const [games, setGames] = useState([]);
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -15,12 +17,12 @@ const useFetchGames = () => {
         const data = await res.json();
 
         if (!res.ok) {
-          console.log(data);
+          console.log(data.message || data);
         }
 
-        console.log(data);
+        setGames(data.results);
       } catch (error) {
-        console.log(error);
+        toast.error(error.message || error);
       } finally {
         setLoading(false);
       }
@@ -29,7 +31,7 @@ const useFetchGames = () => {
     fetchGames();
   }, []);
 
-  return { loading };
+  return { loading, games };
 };
 
 export default useFetchGames;

@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 import HomePage from './pages/Home';
 import GenresPage from './pages/Genres';
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <>
+      <RouterProvider router={router}></RouterProvider>
+      <Toaster />
+    </>
+  );
 }
 export default App;
