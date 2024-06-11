@@ -1,14 +1,23 @@
 import { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdOutlineSearch } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useGetGenres from '../hooks/useGetGenres';
 import useGetPublishers from '../hooks/useGetPublishers';
+import toast from 'react-hot-toast';
 
 const Header = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
   const { loading, genres } = useGetGenres();
   const { loading: getCreatorsLoading, publishers } = useGetPublishers();
+  const [search, setSearch] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    navigate(`/search/${search}`);
+  };
 
   return (
     <header className='bg-[#0F0F1B] p-4 shadow-md'>
@@ -26,8 +35,13 @@ const Header = () => {
               type='text'
               className='bg-[#fff] px-3 p-1 rounded-md max-w-[100rem] text-xs lg:text-lg'
               placeholder='Search Games...'
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
             />
-            <button className='text-xl lg:text-2xl absolute inset-y-0 mr-2 '>
+            <button
+              onClick={handleSearch}
+              className='text-xl lg:text-2xl absolute inset-y-0 mr-2 '
+            >
               <MdOutlineSearch />
             </button>
           </div>

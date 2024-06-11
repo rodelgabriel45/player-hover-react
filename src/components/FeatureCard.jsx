@@ -16,8 +16,10 @@ const FeatureCard = () => {
           <div className='badge badge-warning'>FEATURED</div>
         </h2>
         <p>
-          Player Hover lets you check out the latest and hottest games in any
-          platform.
+          <span className='text-amber-500 text-xl font-bold'>Play</span>
+          <span className='text-xl'>erH</span>
+          <span className='text-amber-500 text-xl font-bold'>over</span> lets
+          you check out the latest and hottest games in any platform.
         </p>
         <div className='card-actions justify-end'>
           <div className='badge badge-outline'>Hot</div>

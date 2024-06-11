@@ -5,6 +5,7 @@ import HomePage from './pages/Home';
 import GenresPage from './pages/Genres';
 import HeaderLayout from './layout/HeaderLayout';
 import PublishersPage from './pages/Publishers';
+import SearchPage from './pages/Search';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: '/genres/:genreId', element: <GenresPage /> },
       { path: '/publishers/:publisherId', element: <PublishersPage /> },
+      { path: '/search/:searchTerm', element: <SearchPage /> },
     ],
   },
 ]);
