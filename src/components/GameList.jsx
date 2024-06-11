@@ -70,12 +70,12 @@ const GameList = () => {
             <button
               disabled={page === 1}
               onClick={handlePrev}
-              className='join-item btn'
+              className='join-item btn btn-lg'
             >
               «
             </button>
-            <button className='join-item btn'>Page {page}</button>
-            <button onClick={handleNext} className='join-item btn'>
+            <button className='join-item btn btn-lg'>Page {page}</button>
+            <button onClick={handleNext} className='join-item btn btn-lg'>
               »
             </button>
           </div>
