@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 
 const BASE_URL = 'https://api.rawg.io/api/games';
 
-const useFetchGames = (page, genre) => {
+const useFetchGames = (page, genre, publisher) => {
   const [loading, setLoading] = useState(false);
   const [games, setGames] = useState([]);
 
@@ -14,7 +14,9 @@ const useFetchGames = (page, genre) => {
         const res = await fetch(
           `${BASE_URL}?key=${
             import.meta.env.VITE_RAWG_API_KEY
-          }&page=${page}&page_size=13${genre ? `&genres=${genre}` : null}`
+          }&page=${page}&page_size=13${genre ? `&genres=${genre}` : ''}${
+            publisher ? `&publishers=${publisher}` : ''
+          }`
         );
         const data = await res.json();
 
@@ -31,7 +33,7 @@ const useFetchGames = (page, genre) => {
     };
 
     fetchGames();
-  }, [page, genre]);
+  }, [page, genre, publisher]);
 
   return { loading, games };
 };

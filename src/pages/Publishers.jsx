@@ -1,18 +1,18 @@
 import { useParams } from 'react-router-dom';
-import useGetGenreDetails from '../hooks/useGetGenreDetails';
 import GameCard from '../components/GameCard';
 import useFetchGames from '../hooks/useFetchGames';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { useState } from 'react';
 import RawgButton from '../components/RawgButton';
 import Pagination from '../components/Pagination';
+import useGetPublisherDetails from '../hooks/UseGetPublisherDetails';
 
-const GenresPage = () => {
+const PublishersPage = () => {
   const [page, setPage] = useState(1);
-  const { genreId } = useParams();
-  const { loading: genreDetailLoading, genreDetail } =
-    useGetGenreDetails(genreId);
-  const { loading, games } = useFetchGames(page, genreId);
+  const { publisherId } = useParams();
+  const { loading: publisherDetailLoading, publisherDetail } =
+    useGetPublisherDetails(publisherId);
+  const { loading, games } = useFetchGames(page, null, publisherId);
 
   const handleNext = () => {
     setPage((prevPage) => (prevPage += 1));
@@ -27,21 +27,24 @@ const GenresPage = () => {
 
   return (
     <div className='flex flex-col'>
-      {genreDetailLoading ? (
+      {publisherDetailLoading ? (
         <div className='self-center mt-20'>
           <LoadingSpinner />
         </div>
       ) : (
         <div className='card mt-10 mx-auto max-w-xl bg-base-100 shadow-xl image-full'>
           <figure>
-            <img src={genreDetail.image_background} alt={genreDetail.name} />
+            <img
+              src={publisherDetail.image_background}
+              alt={publisherDetail.name}
+            />
           </figure>
           <div className='card-body'>
             <h2 className='card-title self-center text-white lg:text-4xl'>
-              {genreDetail.name}
+              {publisherDetail.name}
             </h2>
             <div
-              dangerouslySetInnerHTML={{ __html: genreDetail.description }}
+              dangerouslySetInnerHTML={{ __html: publisherDetail.description }}
               className='line-clamp-6 text-xl text-gray-300'
             />
             <div className='flex justify-end mt-6'>
@@ -72,4 +75,4 @@ const GenresPage = () => {
   );
 };
 
-export default GenresPage;
+export default PublishersPage;

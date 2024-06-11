@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import HomePage from './pages/Home';
 import GenresPage from './pages/Genres';
 import HeaderLayout from './layout/HeaderLayout';
+import PublishersPage from './pages/Publishers';
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: '/genres/:genreId', element: <GenresPage /> },
-      { path: '/developers', element: <HomePage /> },
+      { path: '/publishers/:publisherId', element: <PublishersPage /> },
     ],
   },
 ]);

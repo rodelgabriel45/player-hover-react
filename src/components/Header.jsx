@@ -3,16 +3,22 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdOutlineSearch } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import useGetGenres from '../hooks/useGetGenres';
+import useGetPublishers from '../hooks/useGetPublishers';
 
 const Header = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
   const { loading, genres } = useGetGenres();
+  const { loading: getCreatorsLoading, publishers } = useGetPublishers();
 
   return (
     <header className='bg-[#0F0F1B] p-4 shadow-md'>
       <nav className='flex justify-between items-center max-w-5xl mx-auto'>
         <Link to='/'>
-          <h1>Logo</h1>
+          <h1 className='text-2xl lg:text-4xl drop-shadow-md font-medium'>
+            {' '}
+            <span className='text-amber-500 font-bold'>Play</span>erH
+            <span className='text-amber-500 font-bold'>over</span>{' '}
+          </h1>
         </Link>
         <form>
           <div className='relative flex justify-end text-black'>
@@ -34,13 +40,13 @@ const Header = () => {
                 <div
                   tabIndex={0}
                   role='div'
-                  className='btn m-1 bg-transparent border-none '
+                  className='btn m-1 bg-transparent border-none text-2xl'
                 >
                   Genres
                 </div>
                 <ul
                   tabIndex={0}
-                  className='dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52'
+                  className='dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52'
                 >
                   {genres.map((genre) => (
                     <li key={genre.id}>
@@ -55,20 +61,21 @@ const Header = () => {
                 <div
                   tabIndex={0}
                   role='div'
-                  className='btn m-1 bg-transparent border-none '
+                  className='btn m-1 bg-transparent border-none text-2xl'
                 >
-                  Developers
+                  Creators
                 </div>
                 <ul
                   tabIndex={0}
-                  className='dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52'
+                  className='dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52'
                 >
-                  <li>
-                    <a>Item 1</a>
-                  </li>
-                  <li>
-                    <a>Item 2</a>
-                  </li>
+                  {publishers.map((publisher) => (
+                    <li key={publisher.id}>
+                      <Link to={`/publishers/${publisher.id}`}>
+                        {publisher.name}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </li>
@@ -92,7 +99,7 @@ const Header = () => {
               </div>
               <ul
                 tabIndex={0}
-                className='dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 z-50'
+                className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-50'
               >
                 {genres.map((genre) => (
                   <li key={genre.id}>
@@ -102,7 +109,30 @@ const Header = () => {
               </ul>
             </div>
           </li>
-          <li>Developers</li>
+
+          <li>
+            <div className='dropdown dropdown-hover'>
+              <div
+                tabIndex={0}
+                role='div'
+                className='btn m-1 bg-transparent border-none '
+              >
+                Creators
+              </div>
+              <ul
+                tabIndex={0}
+                className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-50'
+              >
+                {publishers.map((publisher) => (
+                  <li key={publisher.id}>
+                    <Link to={`/publishers/${publisher.id}`}>
+                      {publisher.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
         </ul>
       )}
     </header>

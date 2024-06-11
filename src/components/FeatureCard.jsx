@@ -20,8 +20,8 @@ const FeatureCard = () => {
           platform.
         </p>
         <div className='card-actions justify-end'>
-          <div className='badge badge-outline'>Fashion</div>
-          <div className='badge badge-outline'>Products</div>
+          <div className='badge badge-outline'>Hot</div>
+          <div className='badge badge-outline'>New</div>
         </div>
       </div>
     </div>

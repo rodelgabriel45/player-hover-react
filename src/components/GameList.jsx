@@ -6,6 +6,8 @@ import LoadingSpinner from './LoadingSpinner';
 
 import { FaCheck } from 'react-icons/fa6';
 import { useState } from 'react';
+import RawgButton from './RawgButton';
+import Pagination from './Pagination';
 
 const GameList = () => {
   const [page, setPage] = useState(1);
@@ -23,7 +25,7 @@ const GameList = () => {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center'>
+    <div className='flex flex-col justify-center items-center mt-16'>
       <div className='flex flex-col lg:flex-row gap-2'>
         <div className='max-w-xl'>
           <h1 className='text-2xl lg:text-4xl'>
@@ -46,9 +48,7 @@ const GameList = () => {
               games
             </li>
           </ul>
-          <button className='bg-amber-400 text-black font-medium hover:bg-amber-500 hover:scale-105 duration-75 transform transition-all ease-in-out rounded-md p-2'>
-            <Link to='https://rawg.io/'>Check out RAWG</Link>
-          </button>
+          <RawgButton />
         </div>
         <FeatureCard />
       </div>
@@ -66,19 +66,11 @@ const GameList = () => {
               return <GameCard key={game.id} game={game} />;
             })}
           </div>
-          <div className='mt-10 join'>
-            <button
-              disabled={page === 1}
-              onClick={handlePrev}
-              className='join-item btn btn-lg'
-            >
-              «
-            </button>
-            <button className='join-item btn btn-lg'>Page {page}</button>
-            <button onClick={handleNext} className='join-item btn btn-lg'>
-              »
-            </button>
-          </div>
+          <Pagination
+            page={page}
+            handleNext={handleNext}
+            handlePrev={handlePrev}
+          />
         </>
       )}
     </div>
