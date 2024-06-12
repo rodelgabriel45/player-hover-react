@@ -20,7 +20,7 @@ const GameDetailsPage = () => {
   }
 
   return (
-    <div className='flex flex-col lg:flex-row justify-center items-center mt-5 p-4'>
+    <div className='flex flex-col lg:flex-row justify-center items-center my-16 p-4'>
       <div className='flex flex-col gap-4 max-w-6xl mx-auto'>
         <h1 className='text-2xl lg:text-4xl text-white'>{gameDetails.name}</h1>
 

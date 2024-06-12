@@ -1,6 +1,6 @@
 const Pagination = ({ page, handleNext, handlePrev }) => {
   return (
-    <div className='my-10 join self-center '>
+    <div className='my-20 join self-center '>
       <button
         disabled={page === 1}
         onClick={handlePrev}

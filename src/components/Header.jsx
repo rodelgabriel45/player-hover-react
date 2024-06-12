@@ -82,7 +82,7 @@ const Header = () => {
                   role='div'
                   className='btn m-1 bg-transparent border-none text-2xl'
                 >
-                  Creators
+                  Publishers
                 </div>
                 <ul
                   tabIndex={0}
@@ -136,7 +136,7 @@ const Header = () => {
                 role='div'
                 className='btn m-1 bg-transparent border-none '
               >
-                Creators
+                Publishers
               </div>
               <ul
                 tabIndex={0}

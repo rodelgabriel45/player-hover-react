@@ -26,7 +26,7 @@ const GenresPage = () => {
   };
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col my-10'>
       {genreDetailLoading ? (
         <div className='self-center mt-20'>
           <LoadingSpinner />

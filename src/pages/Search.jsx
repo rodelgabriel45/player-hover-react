@@ -49,7 +49,7 @@ const SearchPage = () => {
   }, [searchTerm, page]);
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col my-10'>
       <div className='self-center mt-10 max-w-6xl mx-auto'>
         <h1 className='text-white lg:text-4xl'>Search Results</h1>
       </div>
