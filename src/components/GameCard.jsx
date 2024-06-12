@@ -1,4 +1,5 @@
 import { FcRating } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 
 const GameCard = ({ game }) => {
   return (
@@ -26,9 +27,12 @@ const GameCard = ({ game }) => {
           Rating:{' '}
           <span className='font-medium text-amber-500'>{game.rating}</span>{' '}
         </p>
-        <button className='hidden mt-5 opacity-100 bg-amber-500 text-white self-center rounded-md w-32 p-2 font-medium hover:bg-amber-600 group-hover/card:inline'>
+        <Link
+          to={`/games/${game.id}`}
+          className='hidden mt-5 text-center opacity-100 bg-amber-500 text-white self-center rounded-md w-32 p-2 font-medium hover:bg-amber-600 group-hover/card:inline'
+        >
           See more...
-        </button>
+        </Link>
       </div>
     </div>
   );
