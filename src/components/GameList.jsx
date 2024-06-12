@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import useFetchGames from '../hooks/useFetchGames';
 import FeatureCard from './FeatureCard';
 import GameCard from './GameCard';
@@ -25,7 +24,7 @@ const GameList = () => {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center mt-16'>
+    <div className='flex flex-col justify-center items-center mt-16 text-gray-300'>
       <div className='flex flex-col lg:flex-row gap-2'>
         <div className='max-w-xl'>
           <h1 className='text-2xl lg:text-4xl'>

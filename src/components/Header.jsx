@@ -28,7 +28,7 @@ const Header = () => {
     <header className='bg-[#0F0F1B] p-4 shadow-md top-0 absolute w-full'>
       <nav className='flex justify-between items-center max-w-5xl mx-auto'>
         <Link to='/'>
-          <h1 className='text-2xl lg:text-4xl drop-shadow-md font-medium'>
+          <h1 className='text-2xl lg:text-4xl drop-shadow-md font-medium text-gray-200'>
             {' '}
             <span className='text-amber-500 font-bold'>Play</span>erH
             <span className='text-amber-500 font-bold'>over</span>{' '}
@@ -59,7 +59,7 @@ const Header = () => {
                 <div
                   tabIndex={0}
                   role='div'
-                  className='btn m-1 bg-transparent border-none text-2xl'
+                  className='btn m-1 bg-transparent border-none text-2xl text-gray-200'
                 >
                   Genres
                 </div>
@@ -80,7 +80,7 @@ const Header = () => {
                 <div
                   tabIndex={0}
                   role='div'
-                  className='btn m-1 bg-transparent border-none text-2xl'
+                  className='btn m-1 bg-transparent border-none text-2xl text-gray-200'
                 >
                   Publishers
                 </div>
@@ -112,7 +112,7 @@ const Header = () => {
               <div
                 tabIndex={0}
                 role='div'
-                className='btn m-1 bg-transparent border-none '
+                className='btn m-1 bg-transparent border-none text-gray-200'
               >
                 Genres
               </div>
@@ -134,7 +134,7 @@ const Header = () => {
               <div
                 tabIndex={0}
                 role='div'
-                className='btn m-1 bg-transparent border-none '
+                className='btn m-1 bg-transparent border-none text-gray-200'
               >
                 Publishers
               </div>
