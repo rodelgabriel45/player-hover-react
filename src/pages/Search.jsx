@@ -28,13 +28,14 @@ const SearchPage = () => {
         const res = await fetch(
           `https://api.rawg.io/api/games?key=${
             import.meta.env.VITE_RAWG_API_KEY
-          }&search=${searchTerm}`
+          }&search=${searchTerm}&page_size=12&page=${page}`
         );
         const data = await res.json();
 
         if (!res.ok) {
           throw new Error(data.message || data);
         }
+        console.log(data);
 
         setSearchResults(data.results);
       } catch (error) {
@@ -45,9 +46,7 @@ const SearchPage = () => {
     };
 
     getSearchResults();
-  }, [searchTerm]);
-
-  console.log(searchResults);
+  }, [searchTerm, page]);
 
   return (
     <div className='flex flex-col'>

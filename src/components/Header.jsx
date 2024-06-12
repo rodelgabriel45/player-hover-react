@@ -16,6 +16,11 @@ const Header = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
 
+    if (!search) {
+      toast.error('Enter a search item');
+      return null;
+    }
+
     navigate(`/search/${search}`);
   };
 
