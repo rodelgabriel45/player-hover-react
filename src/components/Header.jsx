@@ -25,7 +25,7 @@ const Header = () => {
   };
 
   return (
-    <header className='bg-[#0F0F1B] p-4 shadow-md'>
+    <header className='bg-[#0F0F1B] p-4 shadow-md top-0 absolute w-full'>
       <nav className='flex justify-between items-center max-w-5xl mx-auto'>
         <Link to='/'>
           <h1 className='text-2xl lg:text-4xl drop-shadow-md font-medium'>
