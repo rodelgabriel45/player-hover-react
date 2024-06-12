@@ -8,6 +8,7 @@ import PublishersPage from './pages/Publishers';
 import SearchPage from './pages/Search';
 import GameDetailsPage from './pages/GameDetails';
 import FooterLayout from './layout/FooterLayout';
+import NotFoundPage from './pages/NotFoundPage';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
           { path: '/publishers/:publisherId', element: <PublishersPage /> },
           { path: '/search/:searchTerm', element: <SearchPage /> },
           { path: '/games/:gameId', element: <GameDetailsPage /> },
+          { path: '*', element: <NotFoundPage /> },
         ],
       },
     ],
